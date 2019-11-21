@@ -1,3 +1,10 @@
+# Used those two articles I liked a lot (hooks, real life feedback, ...)
+
+https://kentcdodds.com/blog/authentication-in-react-applications
+https://medium.com/better-programming/building-basic-react-authentication-e20a574d5e71
+
+# create-react app default
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
