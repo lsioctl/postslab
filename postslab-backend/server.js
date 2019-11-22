@@ -2,28 +2,23 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
+const db = require('./helper/db');
 
-// Database connection
-mongoose.connect(
-  process.env.DATABASE_URL, {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true 
-  }
-);
-const db = mongoose.connection;
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('connected to database'));
+db.connect().then( () => {
+  // Middlewares
+  // Tell exress to accept JSON as the data format
+  app.use(express.json());
 
-// Middlewares
-// Tell exress to accept JSON as the data format
-app.use(express.json());
+  // Routes
+  const postsRouter = require('./routes/posts');
+  app.use('/posts', postsRouter);
+  const userRouter = require('./routes/user');
+  app.use('/user', userRouter);
 
-// Routes
-const postsRouter = require('./routes/posts');
-app.use('/posts', postsRouter);
-const userRouter = require('./routes/user');
-app.use('/user', userRouter);
+  app.listen(5000, () => console.log('server started'));
+}).catch( (e) => {
+  console.log('error in database connection, exiting');
+  return;
+});
 
-app.listen(5000, () => console.log('server started'));
+
