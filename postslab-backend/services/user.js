@@ -12,18 +12,21 @@ async function createUser(user) {
     password: hashedPassword
   });
 
+  console.log(newUser);
+
   try {
     // Saving the User 
     const savedUser = await newUser.save();
     const token = jwt.sign({
         id: savedUser._id
-    }, process.env.SECRET, {
+    }, process.env.JWT_SECRET, {
         expiresIn: 86400 // expires in 24 hours
     });
     return token;
 } catch (e) {
-  // return a Error message describing the reason     
-  throw Error("Error while Creating User");
+  // return a Error message describing the reason
+  // we may have error on Mongo or JWT    
+  throw Error("Error while Creating User: " + e);
 }
 }
 

@@ -6,8 +6,9 @@ const mongoose = require('mongoose');
 
 // Database connection
 mongoose.connect(
-  process.env.DATABASE_URL, 
-  { useNewUrlParser: true,
+  process.env.DATABASE_URL, {
+    useCreateIndex: true,
+    useNewUrlParser: true,
     useUnifiedTopology: true 
   }
 );
