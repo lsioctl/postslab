@@ -1,8 +1,11 @@
 require('dotenv').config();
+const PORT = process.env.SERVER_PORT;
+const HOST = process.env.SERVER_HOST;
 
 const express = require('express');
 const app = express();
 const db = require('./helper/db');
+
 
 db.connect().then( () => {
   // Middlewares
@@ -15,8 +18,11 @@ db.connect().then( () => {
   const userRouter = require('./routes/user');
   app.use('/user', userRouter);
 
-  app.listen(5000, () => console.log('server started'));
+  app.listen(PORT, HOST, () => {
+    console.log(`server started on ${HOST}:${PORT}`);
+  });
 }).catch( (e) => {
+  // TODO: what if it is a failure in app.listen ?
   console.log('error in database connection, exiting');
   return;
 });
