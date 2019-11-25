@@ -1,15 +1,15 @@
 const userService = require('../services/userService');
 
-async function createUser (req, res, next) {
+async function create(req, res, next) {
   // Req.Body contains the form submit values.
-  const User = {
+  const user = {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password
   }
   try {
     // Calling the Service function with the new object from the Request Body
-    const createdUser = await userService.createUser(User)
+    const createdUser = await userService.create(user)
     return res.status(201).json({
       token: createdUser, 
       message: "Succesfully Created User"}
@@ -20,15 +20,16 @@ async function createUser (req, res, next) {
   }
 }
 
-async function loginUser(req, res, next) {
+async function login(req, res, next) {
   // Req.Body contains the form submit values.
-  const User = {
+  const user = {
     email: req.body.email,
     password: req.body.password
   }
   try {
     // Calling the Service function with the new object from the Request Body
-    const loginUser = await UserService.loginUser(User);
+    const loginUser = await userService.login(user);
+    console.log(loginUser);
     return res.status(201).json({data: loginUser, message: "Succesfully login"})
   } catch (e) {
     //Return an Error Response Message with Code and the Error Message.
@@ -37,6 +38,6 @@ async function loginUser(req, res, next) {
 }
 
 module.exports = {
-  createUser,
-  loginUser
+  create,
+  login
 };

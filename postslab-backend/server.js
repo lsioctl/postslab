@@ -13,9 +13,9 @@ db.connect().then( () => {
   app.use(express.json());
 
   // Routes
-  const postsRouter = require('./routes/posts');
+  const postsRouter = require('./routes/postsRouter');
   app.use('/posts', postsRouter);
-  const userRouter = require('./routes/user');
+  const userRouter = require('./routes/userRouter');
   app.use('/user', userRouter);
 
   app.listen(PORT, HOST, () => {

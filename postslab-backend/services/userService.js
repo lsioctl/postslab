@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/userModel');
 
-async function createUser(user) {
+async function create(user) {
   const hashedPassword = bcrypt.hashSync(user.password, 8);
   const newUser = new User({
     name: user.name,
@@ -14,8 +14,6 @@ async function createUser(user) {
     date: new Date(),
     password: hashedPassword
   });
-
-  console.log(newUser);
 
   try {
     // Saving the User 
@@ -33,9 +31,9 @@ async function createUser(user) {
   }
 }
 
-async function loginUser(user) {
+async function login(user) {
   try {
-    // Find the User 
+    // Find the User
     const details = await User.findOne({ email: user.email });
     const passwordIsValid = bcrypt.compareSync(user.password, details.password);
     if (!passwordIsValid) throw Error("Invalid username/password")
@@ -50,6 +48,6 @@ async function loginUser(user) {
 }
 
 module.exports = {
-  createUser,
-  loginUser
+  create,
+  login
 };

@@ -2,15 +2,15 @@ require('dotenv').config({ path: '../.env' });
 const userService = require('../services/userService');
 const db = require('../helper/db');
 
-const User = {
+const user = {
   name: 'toto8',
   email: 'toto8@toto.com',
   password: 'toto'
 }
 
-db.connect()
+/*db.connect()
   .then( () => {
-    userService.createUser(User)
+    userService.create(user)
       .then( (resolved) => {
         console.log(resolved);
       })
@@ -24,11 +24,11 @@ db.connect()
   .catch( (e) => {
     console.log('error in database connection, exiting');
     return;
-  });
+  });*/
 
 db.connect()
-  .then( () => {
-    userService.loginUser(User)
+  .then(() => {
+    userService.login(user)
       .then( (resolved) => {
         console.log(resolved);
       })
@@ -39,7 +39,8 @@ db.connect()
         db.close();
       })
   })
-  .catch( (e) => {
+  .catch(e => {
+    console.log(e);
     console.log('error in database connection, exiting');
     return;
   });
