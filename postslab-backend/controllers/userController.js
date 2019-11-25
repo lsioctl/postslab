@@ -11,7 +11,7 @@ async function create(req, res, next) {
     // Calling the Service function with the new object from the Request Body
     const createdUser = await userService.create(user)
     return res.status(201).json({
-      token: createdUser, 
+      email: createdUser, 
       message: "Succesfully Created User"}
     );
   } catch (e) {
@@ -28,10 +28,17 @@ async function login(req, res, next) {
   }
   try {
     // Calling the Service function with the new object from the Request Body
-    const loginUser = await userService.login(user);
-    console.log(loginUser);
-    return res.status(201).json({data: loginUser, message: "Succesfully login"})
+    const token = await userService.login(user);
+    console.log('hahahaha' + token);
+    // Session HTTP Only http cookie, which restricts access from the client
+    const cookieOptions = {
+      httpOnly: true,
+      expires: 0 
+     }
+    res.cookie('postslabJWT', token, cookieOptions);
+    return res.status(201).json({data: user.email, message: "Succesfully logged-in"});
   } catch (e) {
+    console.log(e);
     //Return an Error Response Message with Code and the Error Message.
     return res.status(400).json({status: 400, message: "Invalid username or password"})
   }

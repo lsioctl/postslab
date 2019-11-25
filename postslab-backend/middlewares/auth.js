@@ -3,67 +3,46 @@
 require('dotenv').config({ path: '../.env' });
 const JWT_SECRET = process.env.JWT_SECRET;
 
+const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
-
-function getToken(req) {
-  if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') { 
-    // Authorization: Bearer g1jipjgi1ifjioj
-    // Handle token presented as a Bearer token in the Authorization header
-    return req.headers.authorization.split(' ')[1];
-  } else if (req.query && req.query.token) {
-    // Handle token presented as URI param
-    return req.query.token;
-  } else if (req.cookies && req.cookies.token) {
-    // Handle token presented as a cookie parameter
-    return req.cookies.token;
-  }
-  return null; 
-}
 
 /**
  * Authentication middleware
  * we only check if the user has a valid JWT
  * and pass to the next middleware
+ * 
+ * TODO: move part in User service ?
  */
-function authMiddleware(req, res, next) {
-    const token = getToken(res);
-    // let's be not too much explicit on why it failed
-    const msg = {auth: false, message: 'authentication error'};
-    if (!token) {
-      return res.status(401).send(msg);
-    }
-    jwt.verify(token, JWT_SECRET, (err, decoded) => {
-      if (err) {
-        return res.status(401).send(msg);
+async function authMiddleware(req, res, next) {
+  // 1. See if there is a token on the request...if not, reject immediately
+  // req.cookies is set up by the cookieParse middleware
+  const userJWT = req.cookies.postslabJWT;
+  if (!userJWT) {
+      res.send(401, 'Invalid or missing authorization token')
+  }
+  //2. There's a token; see if it is a valid one and retrieve the payload
+  else {
+    const userJWTPayload = jwt.verify(userJWT, JWT_SECRET);
+    console.log(userJWTPayload);
+
+    if (!userJWTPayload) {
+      //Kill the token since it is invalid
+      res.clearCookie('postslabJWT');
+      res.send(401, 'Invalid or missing authorization token');
+    } else {
+      //3. There's a valid token...see if it is one we have in the db as a logged-in user
+      const user = await User.findOne({ _id: userJWTPayload._id, 'tokens.token': userJWT});
+      if (!user) {
+        res.send(401, 'User not currently logged in')
       }
-      // right token, we can proceed to the next middleware
-      next();
-    });
-}
-
-module.exports = authorization;
-
-/*
-
-from: https://medium.com/swlh/jwt-authentication-authorization-in-nodejs-express-mongodb-rest-apis-2019-ad14ec818122
-const jwt = require('jsonwebtoken')
-const User = require('../models/User')
-
-const auth = async(req, res, next) => {
-    const token = req.header('Authorization').replace('Bearer ', '')
-    const data = jwt.verify(token, process.env.JWT_KEY)
-    try {
-        const user = await User.findOne({ _id: data._id, 'tokens.token': token })
-        if (!user) {
-            throw new Error()
-        }
-        req.user = user
-        req.token = token
-        next()
-    } catch (error) {
-        res.status(401).send({ error: 'Not authorized to access this resource' })
+      else {
+        console.log(`Valid user: ${user.email}, ${user._id}`);
+        // pass this information to the next middleware
+        res.locals.uid = user._id;
+        next();
+      }
     }
-
+  } 
 }
-module.exports = auth
-*/
+
+module.exports = authMiddleware;

@@ -18,12 +18,12 @@ async function create(user) {
   try {
     // Saving the User 
     const savedUser = await newUser.save();
-    const token = jwt.sign({
-        id: savedUser._id
+    /*const token = jwt.sign({
+        _id: savedUser._id
     }, JWT_SECRET, {
         expiresIn: 86400 // expires in 24 hours
-    });
-    return token;
+    });*/
+    return newUser.email;
   } catch (e) {
     // return a Error message describing the reason
     // we may have error on Mongo or JWT    
@@ -39,7 +39,7 @@ async function login(user) {
     const passwordIsValid = bcrypt.compareSync(user.password, details.password);
     if (!passwordIsValid) throw Error("Invalid username/password")
     // Create a new JWT
-    const token = jwt.sign({id: details._id}, JWT_SECRET, {
+    const token = jwt.sign({ _id: details._id }, JWT_SECRET, {
         expiresIn: 86400 // expires in 24 hours
     });
     details.tokens = details.tokens.concat({token});
