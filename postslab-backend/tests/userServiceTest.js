@@ -3,8 +3,8 @@ const userService = require('../services/userService');
 const db = require('../helper/db');
 
 const user = {
-  name: 'toto8',
-  email: 'toto8@toto.com',
+  name: 'toto7',
+  email: 'toto7@toto.com',
   password: 'toto'
 }
 

@@ -35,11 +35,16 @@ async function login(user) {
   try {
     // Find the User
     const details = await User.findOne({ email: user.email });
+    // Check the password
     const passwordIsValid = bcrypt.compareSync(user.password, details.password);
     if (!passwordIsValid) throw Error("Invalid username/password")
+    // Create a new JWT
     const token = jwt.sign({id: details._id}, JWT_SECRET, {
         expiresIn: 86400 // expires in 24 hours
     });
+    details.tokens = details.tokens.concat({token});
+    // add it to the token list of the user
+    await details.save();
     return token;
   } catch (e) {
     // return a Error message describing the reason     

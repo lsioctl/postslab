@@ -19,5 +19,13 @@ const requestOptions = {
 };
 
 return fetch(`http://${HOST}:${PORT}/user/login`, requestOptions)
-.then(res => res.json())
+.then(res => {
+  for (let pair of res.headers.entries()) {
+    console.log(pair[0]+ ': '+ pair[1]);
+  };
+  console.log(res.headers.get('set-cookie'));
+  return res.json();
+})
 .then(json => console.log(json));
+
+
