@@ -14,6 +14,10 @@
 - ~~where to store the JWT~~ HTTP only cookie
 - related to: if in header authorization: bearer JWT. this one
 does not depend on CORS (cookies are)
+- factor API calls in a service file
+- struggle with fetch and chained promises, this is not possible
+within react. Errors and Error boundaries to check
+throw Error('response code not 201');
 
 ### BackEnd
 
@@ -51,3 +55,11 @@ https://medium.com/@faizanv/authentication-for-your-react-and-express-applicatio
 for the JWT and HTTP Only Cookie:
 
 https://dev.to/perrydbucs/using-jwts-for-authentication-in-restful-applications-55hc
+
+fetch API data from React:
+
+https://codeburst.io/how-to-fetch-data-from-an-api-with-react-hooks-9e7202b8afcd
+
+and structuring with services:
+
+https://dev.to/pacheco/my-fullstack-setup-node-js-react-js-and-mongodb-2a4k

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -39,6 +39,6 @@ function App() {
       </Router>
     </AuthContext.Provider>
   );
-}
+};
 
 export default App;

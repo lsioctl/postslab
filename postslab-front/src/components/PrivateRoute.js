@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { useAuth } from "../contexts/auth";
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { useAuth } from '../contexts/auth';
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
@@ -21,6 +21,6 @@ function PrivateRoute({ component: Component, ...rest }) {
       }
     />
   );
-}
+};
 
 export default PrivateRoute;
