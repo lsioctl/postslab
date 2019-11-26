@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import Home from './components/Home';
 import Login from './components/Login';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
+import SignedUp from './components/SignedUp';
 import { AuthContext } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
 
@@ -34,6 +35,7 @@ function App() {
 
           <PrivateRoute exact path="/home" component={Home} />
           <Route path="/signup" component={Signup} />
+          <Route path="/signed-up" component={SignedUp} />
           <Route path="/login" component={Login} />
         </div>
       </Router>

@@ -8,13 +8,13 @@ import userService from '../services/userService';
 function Login() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAuthUser } = useAuth();
 
   async function postLogin() {
     try {
-      const json = await userService.login(userName, password);
+      const json = await userService.login(userEmail, password);
       setAuthUser(json.user);
       setLoggedIn(true);
     } catch (error) {
@@ -24,17 +24,17 @@ function Login() {
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/Home" />;
+    return <Redirect to="/home" />;
   };
 
   return (
     <Card>
       <Form>
-      <Input
-          type="username"
-          value={userName}
+        <Input
+          type="email"
+          value={userEmail}
           onChange={e => {
-            setUserName(e.target.value);
+            setUserEmail(e.target.value);
           }}
           placeholder="email"
         />

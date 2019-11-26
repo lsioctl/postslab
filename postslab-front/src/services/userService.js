@@ -3,7 +3,32 @@ const API_HOST = 'localhost';
 const API_PORT = '5000';
 const apiUrl = `http://${API_HOST}:${API_PORT}`
 
-async function login(userName, password) {
+
+async function signup(userName, userEmail, password) {
+  try {
+    const response = await fetch(`${apiUrl}/user/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user: userName,
+        email: userEmail,
+        password: password 
+      })
+    });
+    // fetch will only reject a Promise if there is a network error.
+    // so we have to throw error ourselves if the response is not in
+    // the 2xx range
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.log(error);
+  };
+};
+
+async function login(userEmail, password) {
   try {
     const response = await fetch(`${apiUrl}/user/login`, {
       method: 'POST',
@@ -12,7 +37,7 @@ async function login(userName, password) {
       // the informations sent by the API server
       credentials: 'include',
       body: JSON.stringify({
-        email: userName,
+        email: userEmail,
         password: password 
       })
     });
@@ -54,5 +79,6 @@ async function testAuth() {
 
 export default {
   login,
-  testAuth
+  testAuth,
+  signup
 }
