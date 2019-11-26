@@ -8,16 +8,16 @@ import { useAuth } from "../contexts/auth";
 function PrivateRoute({ component: Component, ...rest }) {
 
   // we use our custom hook to get the auth context
-  const isAuthenticated = useAuth();
+  const authContext = useAuth();
   //const isAuthenticated = true;
 
-  console.log(isAuthenticated);
+  console.log(authContext);
 
   return (
     <Route
       {...rest}
       render={props =>
-        isAuthenticated ? (
+        authContext.authTokens ? (
           <Component {...props} />
         ) : (
           <Redirect to="/login" />

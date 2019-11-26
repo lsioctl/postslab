@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,8 +12,15 @@ import { AuthContext } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
+  const [authTokens, setAuthTokens] = useState();
+  
+  const setTokens = (data) => {
+    sessionStorage.setItem("tokens", JSON.stringify(data));
+    setAuthTokens(data);
+  }
+
   return (
-    <AuthContext.Provider value={false}>
+    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
       <Router>
         <div>
           <ul>

@@ -16,6 +16,18 @@ db.connect().then( () => {
   // Cookie parser is used for auth middleware
   app.use(cookieParser());
 
+  // CORS as the frontend will run on other host or port
+  // Note: use cors middleware for example for a list
+  // here it just to underestand better how cool express is
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    // this one is needed for example for the client to send HTTP Only cookie
+    // aka credentials
+    res.header("Access-Control-Allow-Credentials", "True");
+    next();
+  });
+
   // Routes
   const postsRouter = require('./routes/postsRouter');
   app.use('/posts', postsRouter);

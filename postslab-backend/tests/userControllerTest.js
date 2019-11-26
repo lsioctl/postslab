@@ -20,12 +20,22 @@ const requestOptions = {
 
 return fetch(`http://${HOST}:${PORT}/user/login`, requestOptions)
 .then(res => {
+  if (res.status !== 201) {
+    throw new Error('response code not 201');
+  }
   for (let pair of res.headers.entries()) {
     console.log(pair[0]+ ': '+ pair[1]);
   };
   console.log(res.headers.get('set-cookie'));
-  return res.json();
+  if (res.status !== 201) {
+    throw new Error('response code not 201');
+  } else {
+    return res.json();
+  }
 })
-.then(json => console.log(json));
+.then(json => console.log(json))
+.catch(e => {
+  console.log(e);
+})
 
 
