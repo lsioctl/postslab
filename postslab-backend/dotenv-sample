@@ -1,0 +1,10 @@
+// Server
+SERVER_HOST=apihost
+SERVER_PORT=apiport
+
+// if no DB name specified, Mongo uses test by default
+DATABASE_URL=mongodb://user:pass@mondodbhost:mongodbport/postslab?authSource=admin
+
+// JWT secret
+JWT_SECRET="thesecrettosignyourJWT"
+
