@@ -36,7 +36,7 @@ async function authMiddleware(req, res, next) {
         res.send(401, 'User not currently logged in')
       }
       else {
-        console.log(`Valid user: ${user.email}, ${user._id}`);
+        console.log(`Valid user in authMiddleware: ${user.email}, ${user._id}`);
         // pass this information to the next middleware
         res.locals.uid = user._id;
         next();

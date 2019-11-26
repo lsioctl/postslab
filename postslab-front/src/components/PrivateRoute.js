@@ -9,15 +9,11 @@ function PrivateRoute({ component: Component, ...rest }) {
 
   // we use our custom hook to get the auth context
   const authContext = useAuth();
-  //const isAuthenticated = true;
-
-  console.log(authContext);
-
   return (
     <Route
       {...rest}
       render={props =>
-        authContext.authTokens ? (
+        authContext.authUser ? (
           <Component {...props} />
         ) : (
           <Redirect to="/login" />

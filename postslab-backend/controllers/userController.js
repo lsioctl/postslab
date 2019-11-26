@@ -29,14 +29,15 @@ async function login(req, res, next) {
   try {
     // Calling the Service function with the new object from the Request Body
     const token = await userService.login(user);
-    console.log('hahahaha' + token);
     // Session HTTP Only http cookie, which restricts access from the client
     const cookieOptions = {
       httpOnly: true,
-      expires: 0 
+      // session cookie only
+      expires: 0
+      //expires: new Date(Date.now() + 900000) 
      }
     res.cookie('postslabJWT', token, cookieOptions);
-    return res.status(201).json({data: user.email, message: "Succesfully logged-in"});
+    return res.status(201).json({user: user.email, message: "Succesfully logged-in"});
   } catch (e) {
     console.log(e);
     //Return an Error Response Message with Code and the Error Message.

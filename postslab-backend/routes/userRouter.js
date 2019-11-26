@@ -8,7 +8,7 @@ const authMiddleware = require('../middlewares/auth');
 router.post('/signup', userController.create);
 router.post('/login', userController.login);
 router.post('/authtest', authMiddleware, (req, res) => {
-  return res.status(201).json({user: res.locals.uid, message: "Succesfully logged-in"});
+  return res.status(200).json({user: res.locals.uid, message: "Succesfully logged-in"});
 });
 
 module.exports = router;

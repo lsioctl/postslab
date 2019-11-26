@@ -11,6 +11,9 @@
 - env and gitignore to avoid expose app secrets
 - test FE when not authenticated
 - is switch interesting for react-router ?
+- ~~where to store the JWT~~ HTTP only cookie
+- related to: if in header authorization: bearer JWT. this one
+does not depend on CORS (cookies are)
 
 ### BackEnd
 
@@ -27,6 +30,12 @@ https://stackoverflow.com/questions/24621940/how-to-properly-reuse-connection-to
 https://www.johnvincent.io/mongo/mongoose-integration-testing/
 - design pattern to factor try catch with polymorphic errors ?
 
+- Put validators in model or service ?
+- ~~How to pass variables through Express middlewares~~: seem to be res.locals
+- it would be better to add a user id with the JWT ? to avoid sole JWT stealing ?
+
+- Remove expired JWT tokens from user's token list
+
 ## Links
 
 For the backend structuring:
@@ -39,4 +48,6 @@ https://www.codementor.io/mohdraheem06/securing-node-js-restful-apis-with-json-w
 
 https://medium.com/@faizanv/authentication-for-your-react-and-express-application-w-json-web-tokens-923515826e0#18d5
 
+for the JWT and HTTP Only Cookie:
 
+https://dev.to/perrydbucs/using-jwts-for-authentication-in-restful-applications-55hc

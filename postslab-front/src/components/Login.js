@@ -11,10 +11,13 @@ function Login() {
   const [isError, setIsError] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthTokens } = useAuth();
+  const { setAuthUser } = useAuth();
 
   function postLogin() {
     return fetch(`http://${API_HOST}:${API_PORT}/user/login`, {
+      // this one is need to allow the cookie to be set with
+      // the informations sent by the API server
+      credentials: 'include',
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -39,8 +42,7 @@ function Login() {
       // the response code is ...
       console.log(data);
       if (data) {
-        console.log('yatah');
-        setAuthTokens(data);
+        setAuthUser(data.user);
         setLoggedIn(true);
       }
     })
@@ -51,7 +53,7 @@ function Login() {
   }
 
   if (isLoggedIn) {
-    return <Redirect to="/" />;
+    return <Redirect to="/Home" />;
   }
 
   return (

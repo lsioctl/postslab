@@ -24,7 +24,7 @@ db.connect().then( () => {
     res.header("Access-Control-Allow-Headers", "Content-Type");
     // this one is needed for example for the client to send HTTP Only cookie
     // aka credentials
-    res.header("Access-Control-Allow-Credentials", "True");
+    res.header("Access-Control-Allow-Credentials", "true");
     next();
   });
 
