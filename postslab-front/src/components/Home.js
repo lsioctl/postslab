@@ -16,7 +16,8 @@ function Home() {
       try {
         const json = await userService.testAuth();
         setMessage(json.user);
-      } catch (error) {
+      } 
+      catch (error) {
         setIsError(true);
         console.log(error);
       };

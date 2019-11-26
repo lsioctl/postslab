@@ -17,7 +17,8 @@ function Login() {
       const json = await userService.login(userEmail, password);
       setAuthUser(json.user);
       setLoggedIn(true);
-    } catch (error) {
+    } 
+    catch (error) {
       setIsError(true);
       console.log(error);
     };
