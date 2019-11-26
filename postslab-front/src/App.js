@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import SignedUp from './components/SignedUp';
+import Logout from './components/Logout';
 import { AuthContext } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
 
@@ -24,10 +25,14 @@ function App() {
               <Link to="/home">home</Link>
             </li>
             <li>
+              <Link to="/signup">signup</Link>
+            </li>
+            {/*those will be contextual*/}
+            <li>
               <Link to="/login">login</Link>
             </li>
             <li>
-              <Link to="/signup">signup</Link>
+              <Link to="/logout">logout</Link>
             </li>
           </ul>
 
@@ -37,6 +42,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/signed-up" component={SignedUp} />
           <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
         </div>
       </Router>
     </AuthContext.Provider>

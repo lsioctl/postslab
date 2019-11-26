@@ -12,7 +12,7 @@ async function signup(userName, userEmail, password) {
       body: JSON.stringify({
         user: userName,
         email: userEmail,
-        password: password 
+        password: password
       })
     });
     // fetch will only reject a Promise if there is a network error.
@@ -29,6 +29,7 @@ async function signup(userName, userEmail, password) {
 };
 
 async function login(userEmail, password) {
+  // TODO: allow also with userName
   try {
     const response = await fetch(`${apiUrl}/user/login`, {
       method: 'POST',
@@ -38,7 +39,7 @@ async function login(userEmail, password) {
       credentials: 'include',
       body: JSON.stringify({
         email: userEmail,
-        password: password 
+        password: password
       })
     });
     // fetch will only reject a Promise if there is a network error.
@@ -77,8 +78,31 @@ async function testAuth() {
   };
 };
 
+async function logout() {
+  try {
+    const response = await fetch(`${apiUrl}/user/logout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      // this one is need to allow the cookie to be set with
+      // the informations sent by the API server
+      credentials: 'include'
+    });
+    // fetch will only reject a Promise if there is a network error.
+    // so we have to throw error ourselves if the response is not in
+    // the 2xx range
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    console.log(error);
+  };
+};
+
 export default {
   login,
   testAuth,
-  signup
+  signup,
+  logout
 }
