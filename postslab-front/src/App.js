@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import SignedUp from './components/SignedUp';
 import Logout from './components/Logout';
+import PostsList from './components/PostsList';
 import { AuthContext } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
 
@@ -34,11 +35,18 @@ function App() {
             <li>
               <Link to="/logout">logout</Link>
             </li>
+            <li>
+              <Link to="/posts-list">posts list</Link>
+            </li>
+            <li>
+              <Link to="/logout">logout</Link>
+            </li>
           </ul>
 
           <hr />
 
           <PrivateRoute exact path="/home" component={Home} />
+          <Route path="/posts-list" component={PostsList} />
           <Route path="/signup" component={Signup} />
           <Route path="/signed-up" component={SignedUp} />
           <Route path="/login" component={Login} />
