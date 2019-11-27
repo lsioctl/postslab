@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Card, Form, Input, Button, Error } from './AuthForm';
 import postService from '../services/postService';
+import { tsPropertySignature } from '@babel/types';
 
 
-function PostForm() {
+function PostForm(props) {
   const [isError, setIsError] = useState(false);
   const [postBody, setPostBody] = useState('');
 
@@ -23,6 +24,7 @@ function PostForm() {
     // reminder: synthetic events, can not do 
     // e.target.reset()
     // moreover is a controlled component, so do it the React way ;)
+    props.fetchPosts();
     setPostBody('');
   };
   return (
