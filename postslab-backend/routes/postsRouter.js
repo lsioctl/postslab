@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const postController = require('../controllers/postController');
+const fakeAuthMiddleware = require('../middlewares/fakeAuth');
+
 // Get all
 router.get('/', (req, res) => {
   res.send('To be implemented');
@@ -11,8 +14,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create one
-router.post('/', (req, res) => {
-});
+router.post('/', fakeAuthMiddleware, postController.create);
 
 // Update one
 router.patch('/:id', (req, res) => {
