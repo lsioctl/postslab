@@ -6,9 +6,6 @@ function Home() {
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState('');
 
-  // fetching an API typically has side effects
-  // this hook is used here because functional components
-  // do not have lifecycle like componentDidMount()
   useEffect(() => {
     // eslint points to the fact that effect callbacks are synchronous to avoide race condition
     // so we have to add this boilerplate

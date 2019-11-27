@@ -10,14 +10,8 @@ function Logout() {
   const [isError, setIsError] = useState(false);
   const { setAuthUser } = useAuth();
 
-
-  // TODO: reset the Auth context, I must do something wrong with useEffect
-  // as it say it misses dependencies
-
-
-  // fetching an API typically has side effects
-  // this hook is used here because functional components
-  // do not have lifecycle like componentDidMount()
+  // we use setAuthUser as a depency to avoid this component to re-render
+  // after we logged-out
   useEffect(() => {
     // eslint points to the fact that effect callbacks are synchronous to avoide race condition
     // so we have to add this boilerplate
@@ -26,6 +20,7 @@ function Logout() {
         const json = await userService.logout();
         if (json) {
           setIsLoggedOut(true);
+          setAuthUser();
         }
       } 
       catch (error) {
@@ -34,7 +29,7 @@ function Logout() {
       };
     };
     fetchData();
-  }, []);
+  }, [setAuthUser]) ;
 
   if (isLoggedOut) {
     return <Redirect to="/" />;

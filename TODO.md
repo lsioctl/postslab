@@ -18,6 +18,8 @@ does not depend on CORS (cookies are)
 - struggle with fetch and chained promises, this is not possible
 within react. Errors and Error boundaries to check
 throw Error('response code not 201');
+- get a better grip on what does really do useEffect Hook, and
+the dependencies
 
 ### BackEnd
 
@@ -63,3 +65,7 @@ https://codeburst.io/how-to-fetch-data-from-an-api-with-react-hooks-9e7202b8afcd
 and structuring with services:
 
 https://dev.to/pacheco/my-fullstack-setup-node-js-react-js-and-mongodb-2a4k
+
+For useEffect Hook:
+
+https://overreacted.io/a-complete-guide-to-useeffect/
