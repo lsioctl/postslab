@@ -11,6 +11,8 @@ import Signup from './components/Signup';
 import SignedUp from './components/SignedUp';
 import Logout from './components/Logout';
 import PostsList from './components/PostsList';
+import PostForm from './components/PostForm';
+
 import { AuthContext } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
 
@@ -39,7 +41,7 @@ function App() {
               <Link to="/posts-list">posts list</Link>
             </li>
             <li>
-              <Link to="/logout">logout</Link>
+              <Link to="/posts-form">posts form</Link>
             </li>
           </ul>
 
@@ -47,6 +49,7 @@ function App() {
 
           <PrivateRoute exact path="/home" component={Home} />
           <Route path="/posts-list" component={PostsList} />
+          <Route path="/posts-form" component={PostForm} />
           <Route path="/signup" component={Signup} />
           <Route path="/signed-up" component={SignedUp} />
           <Route path="/login" component={Login} />
