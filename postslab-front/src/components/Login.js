@@ -25,7 +25,7 @@ function Login() {
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/home" />;
+    return <Redirect to="/posts-main" />;
   };
 
   return (
