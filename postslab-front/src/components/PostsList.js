@@ -4,7 +4,7 @@ function PostsList(props) {
   return (
     <div className="Home"> 
      <ul>
-          {props.posts.map(item => (
+          {props.posts && props.posts.map(item => (
             <li key={item.id}>
               {item.user}: {item.body}
             </li>

@@ -10,8 +10,6 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import SignedUp from './components/SignedUp';
 import Logout from './components/Logout';
-import PostsList from './components/PostsList';
-import PostForm from './components/PostForm';
 import PostMain from './components/PostMain';
 
 import { AuthContext } from './contexts/auth'
@@ -46,11 +44,11 @@ function App() {
           <hr />
 
           <PrivateRoute exact path="/home" component={Home} />
-          <Route path="/posts-main" component={PostMain} />
+          <PrivateRoute path="/posts-main" component={PostMain} />
           <Route path="/signup" component={Signup} />
           <Route path="/signed-up" component={SignedUp} />
           <Route path="/login" component={Login} />
-          <Route path="/logout" component={Logout} />
+          <PrivateRoute path="/logout" component={Logout} />
         </div>
       </Router>
     </AuthContext.Provider>

@@ -20,6 +20,10 @@ within react. Errors and Error boundaries to check
 throw Error('response code not 201');
 - get a better grip on what does really do useEffect Hook, and
 the dependencies
+- something wrong with styled component: form onSubmit does not work
+(as it loses focus ?)
+- better UX: if auth is still valid in the session, don't prompt login anyway
+backend service available for this: testauth
 
 ### BackEnd
 
