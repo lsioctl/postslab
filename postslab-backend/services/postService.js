@@ -16,8 +16,20 @@ async function create(post) {
   } catch (e) {   
     throw Error("Error while Creating Post: " + e);
   }
+};
+
+async function list(user) {
+  try {
+    // Get all posts from the user
+    const posts = await Post.find({ user: user });
+    return posts;
+  } catch (e) {
+    // return a Error message describing the reason     
+    throw Error("Error while Login User");
+  }
 }
 
 module.exports = {
   create,
+  list
 };

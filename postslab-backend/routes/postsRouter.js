@@ -5,9 +5,7 @@ const postController = require('../controllers/postController');
 const fakeAuthMiddleware = require('../middlewares/fakeAuth');
 
 // Get all
-router.get('/', (req, res) => {
-  res.send('To be implemented');
-});
+router.get('/', fakeAuthMiddleware, postController.list);
 
 // Get one
 router.get('/:id', (req, res) => {

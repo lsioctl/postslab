@@ -13,39 +13,14 @@ const post = {
 };
 
 const requestOptions = {
-  method: 'POST',
+  method: 'GET',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(post),
 };
 
 return fetch(`http://${HOST}:${PORT}/posts`, requestOptions)
 .then(res => {
   if (res.status !== 201) {
-    throw new Error('response code not 201');
-  }
-  for (let pair of res.headers.entries()) {
-    console.log(pair[0]+ ': '+ pair[1]);
-  };
-  console.log(res.headers.get('set-cookie'));
-  if (res.status !== 201) {
-    throw new Error('response code not 201');
-  } else {
-    return res.json();
-  }
-})
-.then(json => console.log(json))
-.catch(e => {
-  console.log(e);
-});
-
-const requestOptionsList = {
-  method: 'GET',
-  headers: { 'Content-Type': 'application/json' },
-};
-
-return fetch(`http://${HOST}:${PORT}/posts`, requestOptionsList)
-.then(res => {
-  if (res.status !== 201) {
+    console.log(res);
     throw new Error('response code not 201');
   }
   for (let pair of res.headers.entries()) {

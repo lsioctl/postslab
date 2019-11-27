@@ -20,6 +20,21 @@ async function create(req, res, next) {
   };
 };
 
+async function list(req, res, next) {
+  // this information is send by the authMiddleware
+  const user = res.locals.uid;
+  try {
+    // Calling the Service function with the new object from the Request Body
+    const listPosts = await postService.list(user);
+    return res.status(201).json(listPosts);
+  } catch (e) {
+    console.log(e);
+    //Return an Error Response Message with Code and the Error Message.
+    return res.status(400).json({status: 400, message: "User Creation was Unsuccesfull"})
+  };
+};
+
 module.exports = {
   create,
+  list
 };
