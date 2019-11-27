@@ -1,0 +1,11 @@
+/*.postform > form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+}
+.postform > form > input {
+  position: relative;
+  border-radius: 5px;
+}*/

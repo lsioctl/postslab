@@ -1,0 +1,13 @@
+.devnavbar {
+  padding: 10px;
+  height: 10%;
+}
+.devnavbar > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 10px;
+  border-bottom-color: black;
+  border-bottom-style: solid;
+}

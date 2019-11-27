@@ -1,22 +1,23 @@
-.App {
-  text-align: center;
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
+/* to be able to size with %, we need a reference */
+html {
+  height: 100%;
+  width: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body { 
+  font: 13px Helvetica, Arial;
+  height: 100%;
+  width: 100%;
 }
-
-.App-link {
-  color: #09d3ac;
+#root {
+  height: 100%;
+  width: 100%;
+}
+.app {
+  height: 100%;
+  width: 100%;
 }

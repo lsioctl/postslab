@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { Card, Form, Input, Button, Error } from './AuthForm';
+import './PostForm.css';
+import { Input, Error } from './AuthForm';
 import postService from '../services/postService';
-import { tsPropertySignature } from '@babel/types';
 
 
 function PostForm(props) {
@@ -28,7 +27,7 @@ function PostForm(props) {
     setPostBody('');
   };
   return (
-    <div>
+    <div className="postform">
       <form onSubmit={postPost}>
         <Input
           type="text"

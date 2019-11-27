@@ -6,6 +6,10 @@
 - docker secret to avoid exposing mongodb root password
 - usual docker fun with volumes owned by root on dev's dir
 
+### Full Stack
+
+Flow charts.
+
 ### Front 
 
 - env and gitignore to avoid expose app secrets
