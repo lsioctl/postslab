@@ -15,22 +15,42 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border: 1px solid   #25D366;
-
+  box-shadow: 3px 3px  #128c7e;
+}
+.login__card__header {
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 .login__card__form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
+.login__card__form__input {
+  margin: 5px;
+  padding: 10px;
+}
 .login__card__form__button {
+  margin: 5px;
   background-color: #25D366;
   border-radius: 5px;
   border-color: #25D366;
-  padding: 1rem;
+  padding: 10px;
   color: white;
   font-weight: 700;
-  width: 100%;
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
+  font-size: 1.3rem;
+}
+.login__card__footer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.login__card__footer a {
+  margin: 5px;
+  color: #717171;
+  font-weight: bold;
+  text-decoration: none;
 }

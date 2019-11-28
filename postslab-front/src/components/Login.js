@@ -33,6 +33,9 @@ function Login() {
   return (
     <div className="login">
       <div className="login__card">
+        <div className="login__card__header">
+          Welcome to PostsLab
+        </div>
       <form onSubmit={postLogin} className="login__card__form">
         <input className="login__card__form__input"
           type="email"
@@ -52,8 +55,11 @@ function Login() {
         />
         <button className="login__card__form__button" onClick={postLogin}>Sign In</button>
       </form>
-      <Link to="/signup">Don't have an account?</Link>
-      { isError && <Error>The username or password provided were incorrect!</Error> }
+      <div className="login__card__footer">
+        <Link to="/signup">Don't have an account?</Link>
+      </div>
+        { isError && <Error>The username or password provided were incorrect!</Error> }
+
     </div>
     </div>
   );
