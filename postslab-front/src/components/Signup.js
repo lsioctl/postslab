@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Card, Form, Input, Button, Error } from './AuthForm';
+import { Error } from './AuthForm';
 import userService from '../services/userService';
+import './Login.css';
+
 
 function Signup() {
   const [isSignedUp, setIsSignedUp] = useState(false);
@@ -36,46 +38,53 @@ function Signup() {
   };
 
   return (
-    <Card>
-      <Form>
-        <Input
-          type="username"
-          value={userName}
-          onChange={e => {
-            setUserName(e.target.value);
-          }}
-          placeholder="username"
-        />
-        <Input
-          type="email"
-          value={userEmail}
-          onChange={e => {
-            setUserEmail(e.target.value);
-          }}
-          placeholder="email"
-        />
-        <Input
-          type="password"
-          value={password}
-          onChange={e => {
-            setPassword(e.target.value);
-          }}
-          placeholder="password"
-        />
-        <Input
-          type="password"
-          value={passwordAgain}
-          onChange={e => {
-            setPasswordAgain(e.target.value);
-          }}
-          placeholder="password again"
-        />
-        <Button onClick={postSignup}>Sign Up</Button>
-      </Form>
-      { isError && <Error>The username or password provided were incorrect!</Error> }
-      { isCompareError && <Error>The two passwords do not match</Error> }
-      <Link to="/login">Already have an account?</Link>
-    </Card>
+    <div className="sign-up">
+      <div className="login__card">
+        <div className="login__card__header">
+          Sign Up to PostsLab
+        </div>
+        <form onSubmit={postSignup} className="login__card__form">
+          <input className="login__card__form__input"
+            type="username"
+            value={userName}
+            onChange={e => {
+              setUserName(e.target.value);
+            }}
+            placeholder="username"
+          />
+          <input className="login__card__form__input"
+            type="email"
+            value={userEmail}
+            onChange={e => {
+              setUserEmail(e.target.value);
+            }}
+            placeholder="email"
+          />
+          <input className="login__card__form__input"
+            type="password"
+            value={password}
+            onChange={e => {
+              setPassword(e.target.value);
+            }}
+            placeholder="password"
+          />
+          <input className="login__card__form__input"
+            type="password"
+            value={passwordAgain}
+            onChange={e => {
+              setPasswordAgain(e.target.value);
+            }}
+            placeholder="password again"
+          />
+          <button className="login__card__form__button" onClick={postSignup}>Sign Up</button>
+        </form>
+        { isError && <Error>The username or password provided were incorrect!</Error> }
+        { isCompareError && <Error>The two passwords do not match</Error> }
+        <div className="login__card__footer">
+          <Link to="/login">Already have an account?</Link>
+        </div>
+      </div>
+    </div>
   );
 }
 

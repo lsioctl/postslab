@@ -7,6 +7,15 @@
   grid-template-columns: 40% auto 40%;
   grid-template-rows: 15% auto 50%;
 }
+.sign-up {
+  background: rgba(0, 0, 0, 0.02);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% auto 40%;
+  grid-template-rows: 15% auto 40%;
+}
 .login__card {
   background-color: white;
   grid-column: 2/2;

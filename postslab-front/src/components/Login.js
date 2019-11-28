@@ -58,9 +58,8 @@ function Login() {
       <div className="login__card__footer">
         <Link to="/signup">Don't have an account?</Link>
       </div>
-        { isError && <Error>The username or password provided were incorrect!</Error> }
-
-    </div>
+      { isError && <Error>The username or password provided were incorrect!</Error> }
+      </div>
     </div>
   );
 }
