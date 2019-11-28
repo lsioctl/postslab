@@ -1,0 +1,38 @@
+.login {
+  background: rgba(0, 0, 0, 0.02);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% auto 40%;
+  grid-template-rows: 15% auto 50%;
+  z-index: -1;
+}
+.login__card {
+  background-color: white;
+  grid-column: 2/2;
+  grid-row: 2/2;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1; /* Sit on top */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid   #25D366;
+
+}
+.login__card__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.login__card__form__button {
+  background-color: #25D366;
+  border-radius: 5px;
+  border-color: #25D366;
+  padding: 1rem;
+  color: white;
+  font-weight: 700;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}

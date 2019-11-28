@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Card, Form, Input, Button, Error } from './AuthForm';
+import { Error } from './AuthForm';
 import { useAuth } from '../contexts/auth';
 import userService from '../services/userService';
+import './Login.css';
 
 
 function Login() {
@@ -29,9 +30,10 @@ function Login() {
   };
 
   return (
-    <Card>
-      <Form>
-        <Input
+    <div className="login">
+      <div className="login__card">
+      <form className="login__card__form">
+        <input className="login__card__form__input"
           type="email"
           value={userEmail}
           onChange={e => {
@@ -39,7 +41,7 @@ function Login() {
           }}
           placeholder="email"
         />
-        <Input
+        <input className="login__card__form__input"
           type="password"
           value={password}
           onChange={e => {
@@ -47,11 +49,12 @@ function Login() {
           }}
           placeholder="password"
         />
-        <Button onClick={postLogin}>Sign In</Button>
-      </Form>
+        <button className="login__card__form__button" onClick={postLogin}>Sign In</button>
+      </form>
       <Link to="/signup">Don't have an account?</Link>
       { isError && <Error>The username or password provided were incorrect!</Error> }
-    </Card>
+    </div>
+    </div>
   );
 }
 
