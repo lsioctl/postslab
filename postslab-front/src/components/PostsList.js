@@ -15,7 +15,7 @@ function PostsList(props) {
     <div className="postslist">
       <ul className="postslist__list">
         {props.posts && props.posts.map(item => (
-          <li className="postslist__list__item" key={item.id}>
+          <li className="postslist__list__item" key={item._id}>
             <div className="postslist__list__item__message">
               <div className="postslist__list__item__message__header">
                 {item.user}

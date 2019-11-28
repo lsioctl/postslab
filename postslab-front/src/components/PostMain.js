@@ -14,6 +14,7 @@ function PostMain() {
     try {
       const json = await postService.list();
       setPosts(json);
+      console.log(json);
     } 
     catch (error) {
       setIsError(true);
