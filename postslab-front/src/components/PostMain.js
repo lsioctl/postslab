@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './PostMain.css';
-import { Link, Redirect } from 'react-router-dom';
-import { Card, Form, Input, Button, Error } from './AuthForm';
+import { Error } from './AuthForm';
 import PostsList from './PostsList';
 import PostForm from './PostForm';
 import postService from '../services/postService';
@@ -31,14 +30,14 @@ function PostMain() {
     
   return (
     <div className="postmain">
-      <div class="postmain__header">
+      <div className="postmain__header">
           <h1> Posts </h1>
       </div>
-      <div class="postmain__background"></div>
-      <div class="postmain__messages">
+      <div className="postmain__background"></div>
+      <div className="postmain__messages">
         <PostsList posts={posts} />
       </div>
-      <div class="postmain__footer">
+      <div className="postmain__footer">
         <PostForm fetchPosts={fetchPosts}/>
       </div>
       { isError && <Error>Something went wrong fetching the posts</Error> }

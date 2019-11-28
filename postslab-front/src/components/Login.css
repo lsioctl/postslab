@@ -6,7 +6,6 @@
   display: grid;
   grid-template-columns: 40% auto 40%;
   grid-template-rows: 15% auto 50%;
-  z-index: -1;
 }
 .login__card {
   background-color: white;
@@ -14,7 +13,6 @@
   grid-row: 2/2;
   padding: 10px;
   border-radius: 5px;
-  z-index: 1; /* Sit on top */
   display: flex;
   flex-direction: column;
   border: 1px solid   #25D366;

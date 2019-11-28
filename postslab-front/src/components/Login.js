@@ -13,7 +13,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const { setAuthUser } = useAuth();
 
-  async function postLogin() {
+  async function postLogin(e) {
+    e.preventDefault();
     try {
       const json = await userService.login(userEmail, password);
       setAuthUser(json.user);
@@ -32,7 +33,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login__card">
-      <form className="login__card__form">
+      <form onSubmit={postLogin} className="login__card__form">
         <input className="login__card__form__input"
           type="email"
           value={userEmail}
