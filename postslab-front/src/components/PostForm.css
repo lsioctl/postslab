@@ -1,13 +1,14 @@
 .postform {
   display: flex;
   justify-content: center;
+  width: 90%;
 }
 .postform__form {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 90%; 
 }
 .postform__form__input {
   position: relative;
