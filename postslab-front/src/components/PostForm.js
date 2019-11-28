@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PostForm.css';
-import { Input, Error } from './AuthForm';
+import { Error } from './AuthForm';
 import postService from '../services/postService';
 
 
