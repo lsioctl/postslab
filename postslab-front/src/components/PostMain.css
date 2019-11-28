@@ -6,10 +6,10 @@
   flex-direction: column;
   justify-content: space-between;
   width: 80%;
-  height: 80%;
   /* by default, all non static child will have z-index: auto and
   inherit this z-index */
   z-index: 0;
+  border-left: 1px solid rgba(0,0,0,.08);
 }
 .postmain__background {
   /* we get out of the flexbox system (in fact the flow) with this position absolute */

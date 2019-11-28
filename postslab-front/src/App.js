@@ -10,7 +10,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import SignedUp from './components/SignedUp';
 import Logout from './components/Logout';
-import PostMain from './components/PostMain';
+import Main from './components/Main';
 
 import { AuthContext } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
@@ -23,9 +23,9 @@ function App() {
       <Router>
           <div className="app">
           {/*<DevNavBar />*/}
-          <PrivateRoute exact path="/" component={PostMain} />
+          <PrivateRoute exact path="/" component={Main} />
           <PrivateRoute exact path="/home" component={Home} />
-          <PrivateRoute path="/posts-main" component={PostMain} />
+          <PrivateRoute path="/main" component={Main} />
           <Route path="/signup" component={Signup} />
           <Route path="/signed-up" component={SignedUp} />
           <Route path="/login" component={Login} />
