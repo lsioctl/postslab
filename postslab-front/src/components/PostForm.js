@@ -28,8 +28,8 @@ function PostForm(props) {
   };
   return (
     <div className="postform">
-      <form onSubmit={postPost}>
-        <Input
+      <form className="postform__form" onSubmit={postPost}>
+        <input className="postform__form__input"
           type="text"
           value={postBody}
           onChange={e => {
