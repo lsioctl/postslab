@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Error } from './AuthForm';
 import { useAuth } from '../contexts/auth';
@@ -12,6 +12,26 @@ function Login() {
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAuthUser } = useAuth();
+
+  // ensure that the user is not already logged in
+  // we remove all dependencies to ensure it runs only
+  // at the first render
+  async function fetchCheck() {
+    try {
+      const json = await userService.testAuth();
+      setAuthUser(json.user);
+      setLoggedIn(true);
+    } 
+    catch (error) {
+      setIsError(true);
+      console.log(error);
+    };
+  }
+
+
+  useEffect(() => {
+    fetchCheck();
+  })
 
   async function postLogin(e) {
     e.preventDefault();

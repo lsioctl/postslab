@@ -14,7 +14,6 @@ function PostMain() {
     try {
       const json = await postService.list();
       setPosts(json);
-      console.log(json);
     } 
     catch (error) {
       setIsError(true);
@@ -22,9 +21,11 @@ function PostMain() {
     };
   };
 
-  // TODO: really understand better useEffect
-  // if we miss the [], it loops for ever has
-  // state changes, so new render, so state changes ...
+  // we want to fetch only at the first render,
+  // so we tell useEffect, there is no dependencies
+  // to avoid inifinte loops
+  // no dependencies: no need to run the effect if anything
+  // changes
   useEffect(() => {
     fetchPosts();
   }, []);
