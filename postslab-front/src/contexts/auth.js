@@ -1,7 +1,21 @@
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
-export function useAuth() {
+function useAuth() {
   return useContext(AuthContext);
+}
+
+function AuthProvider(props) {
+  const [authUser, setAuthUser] = useState();
+
+  return (
+    <AuthContext.Provider value={{ authUser, setAuthUser }} {...props} />
+  )
+
+}
+
+export {
+  AuthProvider,
+  useAuth
 }

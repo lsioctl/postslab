@@ -12,14 +12,14 @@ import SignedUp from './components/SignedUp';
 import Logout from './components/Logout';
 import Main from './components/Main';
 
-import { AuthContext } from './contexts/auth'
+import { AuthContext, AuthProvider } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
-  const [authUser, setAuthUser] = useState();
+  //const [authUser, setAuthUser] = useState();
   
   return (
-    <AuthContext.Provider value={{ authUser, setAuthUser }}>
+    <AuthProvider>
       <Router>
           <div className="app">
           {/*<DevNavBar />*/}
@@ -32,7 +32,7 @@ function App() {
           <PrivateRoute path="/logout" component={Logout} />
         </div>
       </Router>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 };
 
