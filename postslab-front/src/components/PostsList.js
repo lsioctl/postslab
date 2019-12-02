@@ -18,7 +18,7 @@ function PostsList(props) {
           <li className="postslist__list__item" key={item._id}>
             <div className="postslist__list__item__message">
               <div className="postslist__list__item__message__header">
-                {item.user}
+                {item.user.name}
               </div>
               <div className="postslist__list__item__message__content">
                 {item.body}

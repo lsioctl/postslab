@@ -21,7 +21,11 @@ async function create(post) {
 async function list(user) {
   try {
     // Get all posts from the user
-    const posts = await Post.find({ user: user });
+    const posts = await Post.find({ user: user })
+    // and get user name to be API friendly
+    // TODO: performance ?
+      .populate('user', 'name');
+    console.log(posts);
     return posts;
   } catch (e) {
     // return a Error message describing the reason     
