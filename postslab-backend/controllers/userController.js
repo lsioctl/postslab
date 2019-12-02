@@ -15,6 +15,7 @@ async function create(req, res, next) {
       message: "Succesfully Created User"}
     );
   } catch (e) {
+    console.log(e);
     //Return an Error Response Message with Code and the Error Message.
     return res.status(400).json({status: 400, message: "User Creation was Unsuccesfull"})
   };

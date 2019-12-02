@@ -23,7 +23,7 @@ async function create(user) {
     }, JWT_SECRET, {
         expiresIn: 86400 // expires in 24 hours
     });*/
-    return newUser.email;
+    return newUser.name;
   } catch (e) {
     // return a Error message describing the reason
     // we may have error on Mongo or JWT    
@@ -47,6 +47,7 @@ async function login(user) {
     await details.save();
     return token;
   } catch (e) {
+    console.log(e);
     // return a Error message describing the reason     
     throw Error("Error while Login User");
   }
