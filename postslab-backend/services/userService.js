@@ -18,11 +18,6 @@ async function create(user) {
   try {
     // Saving the User 
     const savedUser = await newUser.save();
-    /*const token = jwt.sign({
-        _id: savedUser._id
-    }, JWT_SECRET, {
-        expiresIn: 86400 // expires in 24 hours
-    });*/
     return newUser.name;
   } catch (e) {
     // return a Error message describing the reason
