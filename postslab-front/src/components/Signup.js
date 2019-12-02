@@ -28,7 +28,6 @@ function Signup() {
           setIsSignedUp(true);
         }
       } catch (error) {
-        console.log('aaaaa');
         setIsError(true);
         console.log(error);
       };
