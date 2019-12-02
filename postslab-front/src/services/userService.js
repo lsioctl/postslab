@@ -9,7 +9,7 @@ async function signup(userName, userEmail, password) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      user: userName,
+      name: userName,
       email: userEmail,
       password: password
     })
