@@ -23,15 +23,13 @@ function Login() {
       setLoggedIn(true);
     } 
     catch (error) {
-      setIsError(true);
       console.log(error);
     };
   }
 
-
   useEffect(() => {
     fetchCheck();
-  })
+  }, []);
 
   async function postLogin(e) {
     e.preventDefault();
