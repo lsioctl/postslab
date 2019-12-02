@@ -29,7 +29,7 @@ function PostForm(props) {
   return (
     <div className="postform">
       <form className="postform__form" onSubmit={postPost}>
-        <input className="postform__form__input"
+        <input autoFocus className="postform__form__input"
           type="text"
           value={postBody}
           onChange={e => {
