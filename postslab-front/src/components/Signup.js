@@ -16,7 +16,8 @@ function Signup() {
   const [passwordAgain, setPasswordAgain] = useState("");
 
 
-  async function postSignup() {
+  async function postSignup(e) {
+    e.preventDefault();
     if (password !== passwordAgain) {
       setIsCompareError(true);
     } else {
@@ -27,6 +28,7 @@ function Signup() {
           setIsSignedUp(true);
         }
       } catch (error) {
+        console.log('aaaaa');
         setIsError(true);
         console.log(error);
       };
