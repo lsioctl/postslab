@@ -14,7 +14,7 @@ function PostForm(props) {
     // TODO not sure this one is needed 
     e.stopPropagation();
     try {
-      const json = await postService.post(postBody);
+      await postService.post(postBody);
     } 
     catch (error) {
       setIsError(true);
@@ -26,15 +26,26 @@ function PostForm(props) {
     props.fetchPosts();
     setPostBody('');
   };
+
+  function handleChange(e) {
+    setPostBody(e.target.value);
+  }
+
+  async function handleKeyUp(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      await postPost(e);
+    };
+  };
+
   return (
     <div className="postform">
-      <form className="postform__form" onSubmit={postPost}>
-        <input autoFocus className="postform__form__input"
-          type="text"
+      <form className="postform__form">
+        <textarea className="postform__form__input"
+          autoFocus="true"
+          type="textarea"
           value={postBody}
-          onChange={e => {
-            setPostBody(e.target.value);
-          }}
+          onChange={handleChange}
+          onKeyUp={handleKeyUp}
           placeholder="type your message here ..."
         />
       </form>
@@ -42,5 +53,5 @@ function PostForm(props) {
     </div>
   );
 }
-
+                    
 export default PostForm;

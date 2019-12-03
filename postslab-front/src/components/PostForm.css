@@ -14,4 +14,7 @@
   position: relative;
   border-radius: 18px;
   padding: 10px;
+  resize: none;
+  font: 13px Helvetica, Arial;
+  height: 80%;
 }
