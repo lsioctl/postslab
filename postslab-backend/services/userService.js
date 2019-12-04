@@ -51,7 +51,7 @@ async function login(user) {
 async function list() {
   try {
     // Find the User
-    const listUsers = await User.find({});
+    const listUsers = await User.find({}).select('name');
     return listUsers;
   } catch (e) {
     console.log(e);
