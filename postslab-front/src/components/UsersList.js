@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './UsersList.css';
 import { Error } from './AuthForm';
 import userService from '../services/userService';
+import defaultUserIcon from './default_user_icon.svg';
 
 function UsersList() {
   const [isError, setIsError] = useState(false);
@@ -35,7 +36,16 @@ function UsersList() {
       <ul className="userslist__content">
         {users.map(item => (
           <li className="userslist__content__item" key={item._id}>
-            {item.name}
+            <div className="userslist__content__item__left">
+              <div className="userslist__content__item__left__icon">
+                <img src={defaultUserIcon} alt=""/>
+              </div>
+            </div>
+            <div className="userslist__content__item__right">
+              <div className="userslist__content__item__right__user">
+                {item.name}
+              </div>
+            </div>
           </li>
         ))}
       </ul>
