@@ -41,7 +41,7 @@ function PostForm(props) {
     <div className="postform">
       <form className="postform__form">
         <textarea className="postform__form__input"
-          autoFocus="true"
+          autoFocus
           type="textarea"
           value={postBody}
           onChange={handleChange}
