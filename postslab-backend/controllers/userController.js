@@ -58,8 +58,21 @@ async function logout(req, res, next) {
   };
 };
 
+async function list(req, res, next) {
+  try {
+    // Calling the Service function with the new object from the Request Body
+    const listUsers = await userService.list();
+    return res.status(201).json(listUsers);
+  } catch (e) {
+    console.log(e);
+    //Return an Error Response Message with Code and the Error Message.
+    return res.status(400).json({status: 400, message: "Invalid username or password"})
+  };
+};
+
 module.exports = {
   create,
   login,
+  list,
   logout
 };

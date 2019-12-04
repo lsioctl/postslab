@@ -10,6 +10,7 @@ router.post('/login', userController.login);
 router.post('/authtest', authMiddleware, (req, res) => {
   return res.status(200).json({user: res.locals.uid, message: "Succesfully logged-in"});
 });
+router.get('/all', authMiddleware, userController.list);
 router.post('/logout', authMiddleware, userController.logout);
 module.exports = router;
 

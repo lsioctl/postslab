@@ -48,7 +48,20 @@ async function login(user) {
   }
 }
 
+async function list() {
+  try {
+    // Find the User
+    const listUsers = await User.find({});
+    return listUsers;
+  } catch (e) {
+    console.log(e);
+    // return a Error message describing the reason     
+    throw Error("Error while Login User");
+  }
+}
+
 module.exports = {
   create,
-  login
+  login,
+  list
 };

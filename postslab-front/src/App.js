@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -12,7 +12,7 @@ import SignedUp from './components/SignedUp';
 import Logout from './components/Logout';
 import Main from './components/Main';
 
-import { AuthContext, AuthProvider } from './contexts/auth'
+import { AuthProvider } from './contexts/auth'
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
