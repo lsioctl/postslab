@@ -25,7 +25,14 @@ function UsersList() {
   // no dependencies: no need to run the effect if anything
   // changes
   useEffect(() => {
+    // TODO: more elegant way instead of two lines ?
     fetchUsers();
+    const int = setInterval(fetchUsers, 3000);
+    // when the component unmount or re-render, it uses this:
+    // it is to avoid having the fetch when the component is unmounted
+    return function cleanup() {
+      clearInterval(int);
+    }
   }, []);
   
   return (
